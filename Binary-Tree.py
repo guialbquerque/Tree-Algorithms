@@ -27,11 +27,31 @@ class BinaryTreeSearch:
                     actual = actual.left
                     if actual == None:
                         parent.left = new
-                    return
+                        self.size += 1
+                        return
                 else:
                     actual = actual.right
                     if actual == None:
                         parent.right = new
+                        self.size += 1
                         return
-        self.size += 1
+                
 
+
+BT = BinaryTreeSearch()
+BT.insert(53)
+BT.insert(30)
+BT.insert(14)
+BT.insert(39)
+BT.insert(9)
+BT.insert(23)
+BT.insert(34)
+BT.insert(49)
+BT.insert(72)
+BT.insert(61)
+BT.insert(84)
+BT.insert(79)
+print(BT.root.value)
+print(BT.root.left.value)
+print(BT.root.right.value)
+print(BT.__len__())
