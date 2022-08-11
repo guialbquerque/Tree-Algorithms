@@ -39,25 +39,42 @@ class BinaryTreeSearch:
                         self.bond.append(str(parent.value) + '->' + str(new.value))
                         self.size += 1
                         return
-                
+    
+    def search(self, value):
+        actual = self.root
+        while actual.value != value:
+            if value < actual.value:
+                actual = actual.left
+                if actual == None:
+                    return None
+            else:
+                actual = actual.right
+                if actual == None:
+                    return None
+        return actual
+
+if __name__ == "__main__":                
 
 
-BT = BinaryTreeSearch()
-BT.insert(53)
-BT.insert(30)
-BT.insert(14)
-BT.insert(39)
-BT.insert(9)
-BT.insert(23)
-BT.insert(34)
-BT.insert(49)
-BT.insert(72)
-BT.insert(61)
-BT.insert(84)
-BT.insert(79)
-BT.insert(89)
-print(BT.root.value)
-print(BT.root.left.value)
-print(BT.root.right.value)
-print(BT.__len__())
-print(BT.bond)
+    BT = BinaryTreeSearch()
+    BT.insert(53)
+    BT.insert(30)
+    BT.insert(14)
+    BT.insert(39)
+    BT.insert(9)
+    BT.insert(23)
+    BT.insert(34)
+    BT.insert(49)
+    BT.insert(72)
+    BT.insert(61)
+    BT.insert(84)
+    BT.insert(79)
+    BT.insert(89)
+    print(BT.root.value)
+    print(BT.root.left.value)
+    print(BT.root.right.value)
+    print(BT.__len__())
+    print(BT.bond)
+    print(BT.search(10))
+    print(BT.search(84))
+    print(BT.search(100))
