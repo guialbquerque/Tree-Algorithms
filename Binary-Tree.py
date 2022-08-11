@@ -46,7 +46,7 @@ class BinaryTreeSearch:
             if value < actual.value:
                 actual = actual.left
                 if actual == None:
-                    return f'Nothing found'
+                    return None
             else:
                 actual = actual.right
                 if actual == None:
