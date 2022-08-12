@@ -65,6 +65,14 @@ class BinaryTreeSearch:
             self.in_order_crossing(node.left)
             print(node.value)
             self.in_order_crossing(node.right)
+
+    #left, right, root
+    def post_order_crossing(self, node):
+        if node != None:
+            self.post_order_crossing(node.left)
+            self.post_order_crossing(node.right)
+            print(node.value)
+
 if __name__ == "__main__":                
 
 
@@ -93,4 +101,6 @@ if __name__ == "__main__":
     print("--------------------------------")
     BT.pre_order_crossing(BT.root)
     print('--------------------------------')
-    BT.in_order_crossing(BT.root.right)
+    BT.in_order_crossing(BT.root)
+    print('--------------------------------')
+    BT.post_order_crossing(BT.root)
