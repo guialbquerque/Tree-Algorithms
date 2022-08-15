@@ -73,6 +73,35 @@ class BinaryTreeSearch:
             self.post_order_crossing(node.right)
             print(node.value)
 
+    def remove_leaf_node(self, value):
+        if self.size == 0:
+            print("The tree is empty!")
+            return
+        actual = self.root
+        parent = self.root
+        is_left = True
+        while actual.value != value:
+            parent =  actual
+            if value < actual.value:
+                is_left = True
+                actual = actual.left
+            else:
+                is_left = False
+                actual = actual.right
+            if actual == None:
+                return False
+        
+        if actual.left == None and actual.right == None:
+            if actual == self.root:
+                self.root = None
+            elif is_left == True:
+                self.bond.remove(str(parent.value) + '->' + str(parent.left.value))
+                parent.left = None
+            else:
+                self.bond.remove(str(parent.value) + '->' + str(parent.right.value))
+                parent.right = None
+
+
 if __name__ == "__main__":                
 
 
@@ -104,3 +133,6 @@ if __name__ == "__main__":
     BT.in_order_crossing(BT.root)
     print('--------------------------------')
     BT.post_order_crossing(BT.root)
+    print("--------------------------------")
+    BT.remove_leaf_node(9)
+    print(BT.bond)
