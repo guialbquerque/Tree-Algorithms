@@ -1,3 +1,6 @@
+from webbrowser import get
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -141,7 +144,20 @@ class BinaryTreeSearch:
                 parent.right = actual.left
                 self.size -= 1
                 self.bond.append(str(parent.value) + '->' + str(actual.left.value))
+    
+    def get_Successor(self, node):
+        parent_successor = node
+        successor = node
+        actual = node.right
+        while actual != None:
+            parent_successor = successor
+            successor = actual
+            actual = actual.left
+        if successor != node.right:
+            parent_successor.left = actual
+            successor.right = node.right
 
+        return successor
 if __name__ == "__main__":                
 
 
@@ -182,3 +198,5 @@ if __name__ == "__main__":
     print('--------------------------')
     print(BT.bond)
     print(BT.size)
+    print('-------------------------')
+    print(BT.get_Successor(BT.root.right))
