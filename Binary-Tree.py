@@ -126,7 +126,7 @@ class BinaryTreeSearch:
                 self.bond.append(str(parent.value) + '->' + str(actual.right.value))
 
         #The node to be remove has a single child and is the left side of the tree
-        else:
+        elif actual.right == None:
 
             if is_left == True:
 
@@ -144,7 +144,20 @@ class BinaryTreeSearch:
                 parent.right = actual.left
                 self.size -= 1
                 self.bond.append(str(parent.value) + '->' + str(actual.left.value))
-    
+
+        #The node to be removed has two children
+        else:
+            successor = self.get_Successor(actual)
+            if actual == self.root:
+                self.root = successor
+            elif is_left == True:
+                parent.left = successor
+            else:
+                parent.right = successor
+            successor.left = actual.left
+
+        return True
+        
     def get_Successor(self, node):
         parent_successor = node
         successor = node
